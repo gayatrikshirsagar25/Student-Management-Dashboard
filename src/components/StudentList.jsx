@@ -4,7 +4,7 @@ import React from 'react';
 // Props:
 // - students: array of student objects to display.
 // - onEdit: callback function to trigger editing a student.
-function StudentList({ students, onEdit }) {
+function StudentList({ students, onEdit, onDelete }) {
   if (students.length === 0) {
     return <p>No students added yet.</p>;
   }
@@ -40,6 +40,14 @@ function StudentList({ students, onEdit }) {
             <td>
               <button onClick={() => onEdit(student)} aria-label={`Edit ${student.name}`}>
                 Edit
+              </button>
+              <button
+                onClick={() => onDelete(student.id)}
+                aria-label={`Delete ${student.name}`}
+                className="delete-btn"
+                style={{ marginLeft: '8px' }}
+              >
+                Delete
               </button>
             </td>
           </tr>

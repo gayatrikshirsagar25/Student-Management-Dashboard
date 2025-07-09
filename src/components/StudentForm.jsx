@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function StudentForm({ courses, onSave, onCancel, editingStudent }) {
+function StudentForm({ courses, onSave, onCancel, editingStudent, onDelete }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [courseId, setCourseId] = useState('');
@@ -124,14 +124,14 @@ function StudentForm({ courses, onSave, onCancel, editingStudent }) {
           placeholder="https://example.com/image.jpg"
         />
       </div>
-      <div className="form-actions">
-        <button type="submit">{editingStudent ? 'Update' : 'Add'}</button>
-        {editingStudent && (
-          <button type="button" onClick={onCancel} className="cancel-btn">
-            Cancel
-          </button>
-        )}
-      </div>
+  <div className="form-actions">
+    <button type="submit">{editingStudent ? 'Update' : 'Add'}</button>
+    {editingStudent && (
+      <button type="button" onClick={onCancel} className="cancel-btn" style={{ marginLeft: '8px' }}>
+        Cancel
+      </button>
+    )}
+  </div>
     </form>
   );
 }

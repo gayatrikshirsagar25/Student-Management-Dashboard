@@ -58,6 +58,15 @@ function App() {
     setEditingStudent(null);
   };
 
+  // Delete student by filtering out the student with the given id.
+  const handleDeleteStudent = (studentId) => {
+    setStudents((prev) => prev.filter((student) => student.id !== studentId));
+    // If the deleted student is currently being edited, cancel editing.
+    if (editingStudent && editingStudent.id === studentId) {
+      setEditingStudent(null);
+    }
+  };
+
   /*
   Note on JavaScript Hoisting:
   - Function declarations like loadCourses are hoisted, so they can be called before their definition.
@@ -87,7 +96,7 @@ function App() {
         editingStudent: editingStudent,
       }),
     React.createElement('h2', null, `Students (${studentsCount})`),
-    React.createElement(StudentList, { students: students, onEdit: handleEditStudent })
+    React.createElement(StudentList, { students: students, onEdit: handleEditStudent, onDelete: handleDeleteStudent })
   );
 }
 
